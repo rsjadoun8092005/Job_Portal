@@ -1,0 +1,15 @@
+# Ignore Visual Studio cache files
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+
+# Rider/JetBrains
+.idea/
+
+# Logs
+*.log
+
