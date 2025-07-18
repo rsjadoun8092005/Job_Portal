@@ -9,5 +9,14 @@ namespace Job_Portal.models
 		public int JobId { get; set; }
 		public DateTime ApplicationDate { get; set; }
 		public ApplicationStatus Status { get; set; }
+
+		public Application(int id,int userId,int jobId,DateTime applicationDate,ApplicationStatus status)
+		{
+			Id = id;
+			UserId = userId;
+			JobId = jobId;
+			ApplicationDate = applicationDate;
+			Status = status;
+		}
 	}
 }

@@ -13,5 +13,21 @@ namespace Job_Portal.models
 		public int ApplicationsCount { get; set; }
 		public int PostedBy { get; set; }
 		public JobType Type { get; set; }
-	}
+
+        public Job() { }
+        public Job(int id, string title, string description, string companyname, string location, DateTime posteddate, int applicationscount, int postedBy, JobType type)
+        {
+            Id = id;
+            Title = title;
+            Description = description;
+            CompanyName = companyname;
+            Location = location;
+            PostedDate = posteddate;
+            ApplicationsCount = applicationscount;
+            PostedBy = postedBy;
+            Type = type;
+        }
+    }
+    
+	
 }

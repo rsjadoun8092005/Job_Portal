@@ -8,5 +8,14 @@ namespace Job_Portal.models
 		public string Name { get; set; }
 		public string Email { get; set; }
 		public UserRole Role { get; set; }
+
+        public User(int id, string name, string email, UserRole role)
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+            Role = role;
+        }
 	}
+
 }
