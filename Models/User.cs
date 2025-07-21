@@ -5,10 +5,11 @@ namespace Job_Portal.models
 	public class User
 	{
 		public int Id { get; set; }
-		public string Name { get; set; }
-		public string Email { get; set; }
+		public string? Name { get; set; }
+		public string? Email { get; set; }
 		public UserRole Role { get; set; }
 
+        public User() { }
         public User(int id, string name, string email, UserRole role)
         {
             Id = id;
@@ -16,6 +17,9 @@ namespace Job_Portal.models
             Email = email;
             Role = role;
         }
-	}
+
+        public ICollection<Job> Jobs { get; set; } = new List<Job>(); //job provider
+        public ICollection<Application> Applications { get; set; } = new List<Application>(); //job seeker
+    }
 
 }

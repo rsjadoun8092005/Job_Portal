@@ -33,7 +33,7 @@ class Program
 
         Console.WriteLine($"User: {user1.Name} applied to job: {job1.Title} at {job1.CompanyName} on {app1.ApplicationDate}. Current status: {app1.Status}");
 
-        string connectionString = "Server =.;Database=JobPortaDB;Trusted_Connection=True";
+        string connectionString = "Server =.;Database=JobPortalDB;Trusted_Connection=True";
 
         var services = new ServiceCollection();
 
