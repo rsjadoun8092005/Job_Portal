@@ -5,16 +5,16 @@ namespace Job_Portal.models
 	public class Job
 	{
 		public int Id { get; set; }
-		public string? Title { get; set; }
-		public string? Description { get; set; }
-		public string? CompanyName { get; set; }
-		public string? Location { get; set; }
+		public string Title { get; set; } = string.Empty;
+		public string Description { get; set; } = string.Empty;
+		public string CompanyName { get; set; } = string.Empty;
+		public string Location { get; set; } = string.Empty;
 		public DateTime PostedDate { get; set; }
-		public int ApplicationsCount { get; set; }
+        public int ApplicationsCount { get; set; } = 0;
 		public JobType Type { get; set; }
 
         public Job() { }
-        public Job(int id, string title, string description, string companyname, string location, DateTime posteddate, int applicationscount, int postedBy, JobType type)
+        public Job(int id, string title, string description, string companyname, string location, DateTime posteddate,int applicationscount, int postedBy, JobType type)
         {
             Id = id;
             Title = title;

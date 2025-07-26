@@ -1,4 +1,5 @@
 ﻿using Job_Portal.models;
+using Job_Portal.models.enums;
 using Job_Portal.Repositories.Implementations;
 using Job_Portal.Repositories.Interfaces;
 using Job_Portal.Services.Interfaces;
@@ -18,15 +19,36 @@ namespace Job_Portal.Services.Implementations
         {
             return await _jobRepository.GetByIdAsync(id);
         }
-        public async Task<List<Job>> GetAllJobsAsync()
+        public async Task<IEnumerable<Job>> GetAllJobsAsync(string? title, string? location, JobType? jobType)
         {
-            List<Job> jobs = (await _jobRepository.GetAllAsync()).ToList();
-            return jobs;
+            var jobs = await _jobRepository.GetAllAsync();
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                jobs = jobs.Where(j => j.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
+            }
+
+            if (!string.IsNullOrEmpty(location))
+            {
+                jobs = jobs.Where(j => j.Location.Contains(location, StringComparison.OrdinalIgnoreCase));
+            }
+
+            if (jobType.HasValue)
+            {
+                jobs = jobs.Where(j => j.Type == jobType.Value);
+            }
+
+            return jobs.ToList();
         }
         public async Task<Job> AddJobAsync(Job job)
         {
             await _jobRepository.AddAsync(job);
             return job;
+        }
+        public async Task UpdateJobAsync(Job job)
+        {
+            await _jobRepository.UpdateAsync(job);
+            await Task.CompletedTask;
         }
         public async Task DeleteJobAsync(int jobId)
         {

@@ -1,0 +1,144 @@
+Folder PATH listing for volume Raghvendra's Files
+Volume serial number is 731A-8480
+D:.
+|   .gitattributes
+|   .gitignore
+|   ConsoleProgram.cs
+|   file-structure.txt
+|   Job_Portal.csproj
+|   Job_Portal.sln
+|   README.md
+|   
++---.github
+|   \---workflows
++---bin
+|   +---Debug
+|   |   \---net8.0
+|   \---Release
+|       \---net8.0
++---Data
+|       AppDbContext.cs
+|       AppDbContextFactory.cs
+|       
++---Helpers
+|       Utils.cs
+|       
++---Job_Portal.API
+|   |   APIProgram.cs
+|   |   appsettings.Development.json
+|   |   appsettings.json
+|   |   Job_Portal.API.csproj
+|   |   Job_Portal.API.csproj.user
+|   |   Job_Portal.API.http
+|   |   
+|   +---bin
+|   |   +---Debug
+|   |   |   \---net8.0
+|   |   \---Release
+|   |       \---net8.0
+|   +---Controllers
+|   |       JobsController.cs
+|   |       
+|   +---obj
+|   |   |   Job_Portal.API.csproj.nuget.dgspec.json
+|   |   |   Job_Portal.API.csproj.nuget.g.props
+|   |   |   Job_Portal.API.csproj.nuget.g.targets
+|   |   |   project.assets.json
+|   |   |   project.nuget.cache
+|   |   |   
+|   |   +---Debug
+|   |   |   \---net8.0
+|   |   |       |   Job_Portal.API.assets.cache
+|   |   |       |   Job_Portal.API.csproj.FileListAbsolute.txt
+|   |   |       |   Job_Portal.API.GlobalUsings.g.cs
+|   |   |       |   
+|   |   |       +---ref
+|   |   |       \---refint
+|   |   \---Release
+|   |       \---net8.0
+|   |           |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+|   |           |   Job_Portal.API.AssemblyInfo.cs
+|   |           |   Job_Portal.API.AssemblyInfoInputs.cache
+|   |           |   Job_Portal.API.assets.cache
+|   |           |   Job_Portal.API.csproj.AssemblyReference.cache
+|   |           |   Job_Portal.API.GeneratedMSBuildEditorConfig.editorconfig
+|   |           |   Job_Portal.API.GlobalUsings.g.cs
+|   |           |   rpswa.dswa.cache.json
+|   |           |   staticwebassets.removed.txt
+|   |           |   
+|   |           +---ref
+|   |           +---refint
+|   |           \---staticwebassets
+|   \---Properties
+|           launchSettings.json
+|           
++---Migrations
+|       20250721091059_InitialCreate.cs
+|       20250721091059_InitialCreate.Designer.cs
+|       AppDbContextModelSnapshot.cs
+|       
++---Models
+|   |   Application.cs
+|   |   Job.cs
+|   |   User.cs
+|   |   
+|   \---enums
+|           ApplicationStatus.cs
+|           JobType.cs
+|           UserRole.cs
+|           
++---obj
+|   |   Job_Portal.csproj.nuget.dgspec.json
+|   |   Job_Portal.csproj.nuget.g.props
+|   |   Job_Portal.csproj.nuget.g.targets
+|   |   project.assets.json
+|   |   project.nuget.cache
+|   |   
+|   +---Debug
+|   |   \---net8.0
+|   |       |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+|   |       |   Job_Portal.AssemblyInfo.cs
+|   |       |   Job_Portal.AssemblyInfoInputs.cache
+|   |       |   Job_Portal.assets.cache
+|   |       |   Job_Portal.csproj.AssemblyReference.cache
+|   |       |   Job_Portal.csproj.CoreCompileInputs.cache
+|   |       |   Job_Portal.csproj.FileListAbsolute.txt
+|   |       |   Job_Portal.GeneratedMSBuildEditorConfig.editorconfig
+|   |       |   Job_Portal.GlobalUsings.g.cs
+|   |       |   Job_Portal.sourcelink.json
+|   |       |   
+|   |       +---ref
+|   |       \---refint
+|   \---Release
+|       \---net8.0
+|           |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+|           |   Job_Portal.AssemblyInfo.cs
+|           |   Job_Portal.AssemblyInfoInputs.cache
+|           |   Job_Portal.assets.cache
+|           |   Job_Portal.csproj.AssemblyReference.cache
+|           |   Job_Portal.GeneratedMSBuildEditorConfig.editorconfig
+|           |   Job_Portal.GlobalUsings.g.cs
+|           |   
+|           +---ref
+|           \---refint
++---Repositories
+|   +---Implementations
+|   |       ApplicationRepository.cs
+|   |       JobRepository.cs
+|   |       Repository.cs
+|   |       UserRepository.cs
+|   |       
+|   \---Interfaces
+|           IApplicationRepository.cs
+|           IJobRepository.cs
+|           IRepository.cs
+|           IUserRepository.cs
+|           
++---Resources
+\---Services
+    +---Implementations
+    |       JobService.cs
+    |       
+    \---Interfaces
+            IJobService.cs
+            

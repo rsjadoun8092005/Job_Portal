@@ -12,6 +12,7 @@ namespace Job_Portal.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Application> Applications { get; set; }
+        public DbSet<Bookmark> Bookmarks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,6 +33,19 @@ namespace Job_Portal.Data
                 .WithOne(a => a.Job)
                 .HasForeignKey(a => a.JobId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Bookmark>(entity =>
+            {
+                entity.HasOne(b => b.User)
+                      .WithMany()
+                      .HasForeignKey(b => b.UserId)
+                      .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(b => b.Job)
+                      .WithMany()
+                      .HasForeignKey(b => b.JobId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Job_Portal.Repositories
+namespace Job_Portal.Repositories.Implementations
 {
     public class ApplicationRepository : IApplicationRepository
     {
@@ -31,22 +31,28 @@ namespace Job_Portal.Repositories
             return application;
         }
 
-        public async Task AddAsync(Application application)
+        public async Task<Application> AddAsync(Application application)
         {
             await _context.Applications.AddAsync(application);
             await _context.SaveChangesAsync();
+            return application;
         }
 
-        public void Update(Application application)
+        public async Task<Application> UpdateAsync(Application application)
         {
             _context.Applications.Update(application);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return application;
         }
 
-        public void Delete(Application application)
+        public async Task DeleteAsync(int id)
         {
-            _context.Applications.Remove(application);
-            _context.SaveChanges();
+            var application = await _context.Applications.FindAsync(id);
+            if (application != null)
+            {
+                _context.Applications.Remove(application);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
