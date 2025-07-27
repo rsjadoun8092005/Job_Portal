@@ -1,4 +1,4 @@
-﻿using Job_Portal.API.DTOs;
+﻿using Job_Portal.DTOs;
 using Job_Portal.models;
 using Job_Portal.Repositories.Implementations;
 using Job_Portal.Repositories.Interfaces;
@@ -32,7 +32,7 @@ namespace Job_Portal.API.Controllers
             {
                 Id = app.Id,
                 ApplicationDate = app.ApplicationDate,
-                Status = app.Status,
+                Status = app.Status.ToString(),
                 UserId = app.UserId,
                 JobId = app.JobId
             }).ToList();
@@ -70,7 +70,7 @@ namespace Job_Portal.API.Controllers
             {
                 Id = createdApplication.Id,
                 ApplicationDate = createdApplication.ApplicationDate,
-                Status = createdApplication.Status,
+                Status = createdApplication.Status.ToString(),
                 UserId = createdApplication.UserId,
                 JobId = createdApplication.JobId
             };

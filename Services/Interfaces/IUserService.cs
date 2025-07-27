@@ -11,5 +11,6 @@ namespace Job_Portal.Services.Interfaces
         Task<User> AddUserAsync(User user);
         Task DeleteUserAsync(int userId);
         Task UpdateUserAsync(User user);
+        Task<User?> LoginAsync(string email, string password);
     }
 }

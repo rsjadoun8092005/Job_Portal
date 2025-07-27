@@ -1,4 +1,4 @@
-﻿using Job_Portal.API.DTOs;
+﻿using Job_Portal.DTOs;
 using Job_Portal.models;
 using Job_Portal.models.enums;
 using Job_Portal.Services.Interfaces;
@@ -34,7 +34,7 @@ namespace Job_Portal.API.Controllers
                 Location = job.Location,
                 PostedDate = job.PostedDate,
                 ApplicationsCount = job.ApplicationsCount,
-                Type = job.Type,
+                Type = job.Type.ToString(),
                 UserId = job.UserId
             });
 

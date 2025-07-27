@@ -18,16 +18,24 @@ namespace Job_Portal.Repositories.Implementations
 
         public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                .Include(u => u.Jobs)
+                .Include(u => u.Applications)
+                .ToListAsync();
         }
 
         public async Task<User> GetByIdAsync(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users
+                .Include(u => u.Jobs)
+                .Include(u => u.Applications)
+                .FirstOrDefaultAsync(u => u.Id == id);
+
             if (user == null)
             {
-                throw new KeyNotFoundException($"User with ID {id} was not found.");
+                throw new KeyNotFoundException($"User with ID {id} not found.");
             }
+
             return user;
         }
 
@@ -53,6 +61,11 @@ namespace Job_Portal.Repositories.Implementations
                 _context.Users.Remove(user);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
     }
 }

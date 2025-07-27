@@ -1,4 +1,4 @@
-﻿namespace Job_Portal.API.DTOs
+﻿namespace Job_Portal.DTOs
 {
     public class CreateBookmarkDTO
     {

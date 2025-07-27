@@ -3,7 +3,7 @@ using Job_Portal.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Job_Portal.API.DTOs;
+using Job_Portal.DTOs;
 
 namespace Job_Portal.API.Controllers
 {
@@ -19,9 +19,19 @@ namespace Job_Portal.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<User>>> GetAllUsers()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUsers()
         {
-            return Ok(await _userService.GetAllUsersAsync());
+            var users = await _userService.GetAllUsersAsync();
+
+            var userDTOs = users.Select(user => new UserDTO
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                Role = user.Role.ToString()
+            }).ToList();
+
+            return Ok(userDTOs);
         }
 
         [HttpGet("{id}")]
@@ -30,16 +40,36 @@ namespace Job_Portal.API.Controllers
             var user = await _userService.GetUserByIdAsync(id);
             if (user == null) return NotFound();
 
-            
-            var userDTO = new UserDTO
+            var userDetailDTO = new UserDetailDTO
             {
                 Id = user.Id,
                 Name = user.Name,
                 Email = user.Email,
-                Role = user.Role
+                Role = user.Role.ToString(),
+
+                Jobs = user.Jobs.Select(job => new JobDTO
+                {
+                    Id = job.Id,
+                    Title = job.Title,
+                    CompanyName = job.CompanyName,
+                    Location = job.Location,
+                    Type = job.Type.ToString(),
+                    ApplicationsCount = job.ApplicationsCount,
+                    PostedDate = job.PostedDate,
+                    UserId = job.UserId
+                }).ToList(),
+
+                Applications = user.Applications.Select(app => new ApplicationDTO
+                {
+                    Id = app.Id,
+                    ApplicationDate = app.ApplicationDate,
+                    Status = app.Status.ToString(),
+                    JobId = app.JobId,
+                    UserId = app.UserId
+                }).ToList()
             };
 
-            return Ok(userDTO);
+            return Ok(userDetailDTO);
         }
 
         [HttpPost]
@@ -49,11 +79,25 @@ namespace Job_Portal.API.Controllers
             {
                 Name = createUserDTO.Name,
                 Email = createUserDTO.Email,
+                Password = createUserDTO.Password,
                 Role = createUserDTO.Role 
             };
 
             var createdUser = await _userService.AddUserAsync(newUser);
             return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginDTO loginDTO)
+        {
+            var user = await _userService.LoginAsync(loginDTO.Email, loginDTO.Password);
+
+            if (user == null)
+            {
+                return Unauthorized("Invalid credentials.");
+            }
+
+            return Ok($"Welcome back, {user.Name}!");
         }
 
         [HttpPut("{id}")]

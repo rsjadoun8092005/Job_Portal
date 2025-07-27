@@ -1,6 +1,6 @@
 ﻿using Job_Portal.models.enums;
 
-namespace Job_Portal.API.DTOs
+namespace Job_Portal.DTOs
 {
     public class CreateApplicationDTO
     {

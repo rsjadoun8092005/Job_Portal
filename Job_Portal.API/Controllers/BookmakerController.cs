@@ -1,4 +1,4 @@
-﻿using Job_Portal.API.DTOs;
+﻿using Job_Portal.DTOs;
 using Job_Portal.models;
 using Job_Portal.Repositories.Interfaces;
 using Job_Portal.Services.Interfaces;
