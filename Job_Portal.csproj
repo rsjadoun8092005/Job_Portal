@@ -16,12 +16,18 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="xunit" Version="2.9.3" />
   </ItemGroup>
 
 	<ItemGroup>
 		<Compile Remove="Job_Portal.API\**" />
 		<EmbeddedResource Remove="Job_Portal.API\**" />
 		<None Remove="Job_Portal.API\**" />
+
+		<Compile Remove="Job_Portal.Tests\**" />
+		<EmbeddedResource Remove="Job_Portal.Tests\**" />
+		<None Remove="Job_Portal.Tests\**" />
 	</ItemGroup>
 
 </Project>

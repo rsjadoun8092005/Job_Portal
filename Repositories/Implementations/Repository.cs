@@ -33,14 +33,14 @@ namespace Job_Portal.Repositories.Implementations
         public async Task<T> AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync(); // Important!
+            await _context.SaveChangesAsync();
             return entity;
         }
 
         public async Task<T> UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
-            await _context.SaveChangesAsync(); // Important!
+            await _context.SaveChangesAsync();
             return entity;
         }
 
@@ -53,7 +53,7 @@ namespace Job_Portal.Repositories.Implementations
             }
 
             _dbSet.Remove(entity);
-            await _context.SaveChangesAsync(); // Important!
+            await _context.SaveChangesAsync();
         }
     }
 }

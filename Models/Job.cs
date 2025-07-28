@@ -26,7 +26,6 @@ namespace Job_Portal.models
             Type = type;
         }
 
-        // Foreign key to User
         public int UserId { get; set; } //job provider
         public User? User { get; set; }
         public ICollection<Application> Applications { get; set; } = new List<Application>();
