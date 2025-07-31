@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Job_Portal.models.Job>
+
+@{
+    ViewData["Title"] = "Available Jobs";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Job Listings</h1>
+    <p>Browse the latest job openings.</p>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var job in Model)
+        {
+            <tr>
+                <td>@job.Title</td>
+                <td>@job.CompanyName</td>
+                <td>@job.Location</td>
+                <td>@job.Type</td>
+            </tr>
+        }
+    </tbody>
+</table>

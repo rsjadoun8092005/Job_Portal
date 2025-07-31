@@ -1,14 +1,14 @@
-﻿using Serilog;
+﻿using Job_Portal.API.Middleware;
+using Job_Portal.Data;
+using Job_Portal.Repositories.Implementations;
+using Job_Portal.Repositories.Interfaces;
+using Job_Portal.Services.Implementations;
+using Job_Portal.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Job_Portal.Data;
-using Job_Portal.Repositories.Interfaces;
-using Job_Portal.Repositories.Implementations;
-using Job_Portal.Services.Interfaces;
-using Job_Portal.Services.Implementations;
-using Job_Portal.API.Middleware;
+using Serilog;
 using System.Text.Json.Serialization;
 
 Log.Logger = new LoggerConfiguration()
@@ -42,7 +42,6 @@ try
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
-
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
@@ -50,10 +49,12 @@ try
 
     app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
+    app.UseSwagger();
+    app.UseSwaggerUI();
+
     if (app.Environment.IsDevelopment())
     {
-        app.UseSwagger();
-        app.UseSwaggerUI();
+        
     }
 
     app.UseHttpsRedirection();
